@@ -230,8 +230,6 @@ define(function (require) {
 
     			//colocar model starter data
 				//this.drawingCanvas(model.get('altura'),model.get('alturaPerna'),model.get('tamanhoBraco'),model.get('pescoco'),model.get('torax'),model.get('cintura'),model.get('coxa'),model.get('quadril'));
-			
-
 			$(document).on("toDrawing", function(){
 				self.drawingCanvas(model.get('altura'),model.get('alturaPerna'),model.get('tamanhoBraco'),model.get('pescoco'),model.get('torax'),model.get('cintura'),model.get('coxa'),model.get('quadril'));
 			});

@@ -1,0 +1,12 @@
+{ "config": 
+      {"altura": "2.00",
+	"perna": "1.11",
+	"braco": "0.21",
+	"pescoco": "0.41",
+	"torax": "0.87",
+	"cintura": "0.91",
+	"coxa": "0.59",
+	"quadril":"0.97"}
+    
+    
+}

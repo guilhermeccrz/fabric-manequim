@@ -9,7 +9,7 @@ define(function (require) {
 
     var AppManequim = Backbone.View.extend({
 
-    	drawingCanvas: function(altura,alturaPerna,tamanhoBraco,tamanhoPescoco,caixaToraxica,tamanhoCintura,tamanhoCoxa,quadril){
+    	drawingCanvas: function(altura,alturaPerna,tamanhoBraco,tamanhoPescoco,caixaToraxica,tamanhoCintura,tamanhoCoxa,quadril,clothes){
 			console.log('drawingCanvas');
 			console.log(tamanhoBraco);
 
@@ -97,6 +97,29 @@ define(function (require) {
 					var cintura = objects[16].scale(options.escalaBasica);
 		        	cintura.set({  angle: 0});  
 
+		        	//clothes sleep
+
+		        	var roupaDormirCima = objects[17].scale(options.escalaBasica);
+		        	roupaDormirCima.set({  angle: 0, strokeDashArray: [12, 1],stroke: '#26526b'}); 
+
+		        	var roupaDormirBaixo = objects[18].scale(options.escalaBasica);
+		        	roupaDormirBaixo.set({  angle: 0, strokeDashArray: [12, 1],stroke: '#26526b'}); 
+
+		        	//clothes winter
+		        	var roupaInvernoCima = objects[19].scale(options.escalaBasica);
+		        	roupaInvernoCima.set({  angle: 0, strokeDashArray: [12, 1],stroke: '#26526b'}); 
+
+		        	var roupaInvernoBaixo = objects[20].scale(options.escalaBasica);
+		        	roupaInvernoBaixo.set({  angle: 0, strokeDashArray: [12, 1],stroke: '#26526b'}); 
+
+		        	//clothes summer
+		        	var roupaVeraoCima = objects[21].scale(options.escalaBasica);
+		        	roupaVeraoCima.set({  angle: 0, strokeDashArray: [12, 1],stroke: '#26526b'}); 
+
+		        	var roupaVeraoBaixo = objects[22].scale(options.escalaBasica);
+		        	roupaVeraoBaixo.set({  angle: 0, strokeDashArray: [12, 1],stroke: '#26526b'}); 
+
+
 
 		        	options.escalaCintura = ((tamanhoCintura-0.90)/1.3)+1;
 					cintura = new fabric.Group([cintura],{
@@ -142,15 +165,58 @@ define(function (require) {
 						originX:'center'
 					});
 
+					//clothes sleep
+
+					options.escalaTorax = ((caixaToraxica-0.87)/3.7)+1;
+					var roupaDormir = new fabric.Group([roupaDormirCima,roupaDormirBaixo],{
+						scaleY: options.escalaTorax,
+						scaleX: options.escalaTorax,
+						originX:'center'
+					});
+
+					//clothes winter
+
+					options.escalaTorax = ((caixaToraxica-0.87)/3.7)+1;
+					var roupaInverno = new fabric.Group([roupaInvernoCima,roupaInvernoBaixo],{
+						scaleY: options.escalaTorax,
+						scaleX: options.escalaTorax,
+						originX:'center'
+					});
+
+					//clothes summer
+					options.escalaTorax = ((caixaToraxica-0.87)/3.7)+1;
+					var roupaVerao = new fabric.Group([roupaVeraoCima,roupaVeraoBaixo],{
+						scaleY: options.escalaTorax,
+						scaleX: options.escalaTorax,
+						originX:'center'
+					});
+
+
+					//clothes selection
+					var fullBody = [];
+					if(clothes == 'summer'){
+						fullBody = [cabeca,pescoco,torax,bracos,cintura,maoEsquerda,maoDireita,pernas,coxa,roupaVerao];
+					}
+					else if(clothes == 'winter'){
+						fullBody = [cabeca,pescoco,torax,bracos,cintura,maoEsquerda,maoDireita,pernas,coxa,roupaInverno];
+					}
+					else if(clothes == 'sleep'){
+						fullBody = [cabeca,pescoco,torax,bracos,cintura,maoEsquerda,maoDireita,pernas,coxa,roupaDormir];
+					}
+
 					
-					var corpo = new fabric.Group([cabeca,pescoco,torax,bracos,cintura,maoEsquerda,maoDireita,pernas,coxa],{
+					var corpo = new fabric.Group(fullBody,{
 						originY:'bottom',
 						scaleY: options.escalaCorpo,
 						scaleX: options.escalaCorpo,
 						top:$('#manequim-canvas').height() //need to verify this
 					});
 
+				
+
+
 					canvas.add(corpo);
+
 					corpo.centerH();
 					corpo.lockRotation = true;
 					corpo.lockMovementX = true;
@@ -204,11 +270,13 @@ define(function (require) {
     			var coxa = $('.controls .coxa').val();
     			var quadril = $('.controls .cintura').val();
 
+    			var roupa = $('.roupa').val();
+
 				
     			model.set({altura:altura, alturaPerna:alturaPerna, tamanhoBraco:tamanhoBraco, pescoco:pescoco, torax:torax, cintura:cintura, coxa:coxa, quadril:quadril });
 
     			console.log('get altura'+model.get('coxa'));
-    			self.drawingCanvas(model.get('altura'),model.get('alturaPerna'),model.get('tamanhoBraco'),model.get('pescoco'),model.get('torax'),model.get('cintura'),model.get('coxa'),model.get('quadril'));
+    			self.drawingCanvas(model.get('altura'),model.get('alturaPerna'),model.get('tamanhoBraco'),model.get('pescoco'),model.get('torax'),model.get('cintura'),model.get('coxa'),model.get('quadril'),roupa);
     		
 
     		});
@@ -231,7 +299,7 @@ define(function (require) {
     			//colocar model starter data
 				//this.drawingCanvas(model.get('altura'),model.get('alturaPerna'),model.get('tamanhoBraco'),model.get('pescoco'),model.get('torax'),model.get('cintura'),model.get('coxa'),model.get('quadril'));
 			$(document).on("toDrawing", function(){
-				self.drawingCanvas(model.get('altura'),model.get('alturaPerna'),model.get('tamanhoBraco'),model.get('pescoco'),model.get('torax'),model.get('cintura'),model.get('coxa'),model.get('quadril'));
+				self.drawingCanvas(model.get('altura'),model.get('alturaPerna'),model.get('tamanhoBraco'),model.get('pescoco'),model.get('torax'),model.get('cintura'),model.get('coxa'),model.get('quadril'),'summer');
 			});
            				
 				this.simulator();

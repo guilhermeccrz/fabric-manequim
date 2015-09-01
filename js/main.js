@@ -100,24 +100,24 @@ define(function (require) {
 		        	//clothes sleep
 
 		        	var roupaDormirCima = objects[17].scale(options.escalaBasica);
-		        	roupaDormirCima.set({  angle: 0, strokeDashArray: [12, 1],stroke: '#26526b'}); 
+		        	roupaDormirCima.set({  angle: 0, strokeDashArray: [12, 2],stroke: '#26526b'}); 
 
 		        	var roupaDormirBaixo = objects[18].scale(options.escalaBasica);
-		        	roupaDormirBaixo.set({  angle: 0, strokeDashArray: [12, 1],stroke: '#26526b'}); 
+		        	roupaDormirBaixo.set({  angle: 0, strokeDashArray: [12, 2],stroke: '#26526b'}); 
 
 		        	//clothes winter
 		        	var roupaInvernoCima = objects[19].scale(options.escalaBasica);
-		        	roupaInvernoCima.set({  angle: 0, strokeDashArray: [12, 1],stroke: '#26526b'}); 
+		        	roupaInvernoCima.set({  angle: 0, strokeDashArray: [12, 2],stroke: '#26526b'}); 
 
 		        	var roupaInvernoBaixo = objects[20].scale(options.escalaBasica);
-		        	roupaInvernoBaixo.set({  angle: 0, strokeDashArray: [12, 1],stroke: '#26526b'}); 
+		        	roupaInvernoBaixo.set({  angle: 0, strokeDashArray: [12, 2],stroke: '#26526b'}); 
 
 		        	//clothes summer
 		        	var roupaVeraoCima = objects[21].scale(options.escalaBasica);
-		        	roupaVeraoCima.set({  angle: 0, strokeDashArray: [12, 1],stroke: '#26526b'}); 
+		        	roupaVeraoCima.set({  angle: 0, strokeDashArray: [12, 2],stroke: '#26526b'}); 
 
 		        	var roupaVeraoBaixo = objects[22].scale(options.escalaBasica);
-		        	roupaVeraoBaixo.set({  angle: 0, strokeDashArray: [12, 1],stroke: '#26526b'}); 
+		        	roupaVeraoBaixo.set({  angle: 0, strokeDashArray: [12, 2],stroke: '#26526b'}); 
 
 
 

@@ -167,27 +167,49 @@ define(function (require) {
 
 					//clothes sleep
 
-					options.escalaTorax = ((caixaToraxica-0.87)/3.7)+1;
-					var roupaDormir = new fabric.Group([roupaDormirCima,roupaDormirBaixo],{
+
+					//options.escalaTorax = ((caixaToraxica-0.87)/3.7)+1;
+					var SroupaDormirCima = new fabric.Group([roupaDormirCima],{
 						scaleY: options.escalaTorax,
 						scaleX: options.escalaTorax,
+						originX:'center'
+					});
+
+					//options.escalaTorax = ((caixaToraxica-0.87)/3.7)+1;
+					var SroupaDormirBaixo = new fabric.Group([roupaDormirBaixo],{
+						scaleY: options.escalaPerna,
+						scaleX: options.escalaCoxa,
 						originX:'center'
 					});
 
 					//clothes winter
 
-					options.escalaTorax = ((caixaToraxica-0.87)/3.7)+1;
-					var roupaInverno = new fabric.Group([roupaInvernoCima,roupaInvernoBaixo],{
+					//options.escalaTorax = ((caixaToraxica-0.87)/3.7)+1;
+					var SroupaInvernoCima = new fabric.Group([roupaInvernoCima],{
 						scaleY: options.escalaTorax,
 						scaleX: options.escalaTorax,
 						originX:'center'
 					});
 
+					//options.escalaTorax = ((caixaToraxica-0.87)/3.7)+1;
+					var SroupaInvernoBaixo = new fabric.Group([roupaInvernoBaixo],{
+						scaleY: options.escalaPerna,
+						scaleX: options.escalaCoxa,
+						originX:'center'
+					});
+
 					//clothes summer
-					options.escalaTorax = ((caixaToraxica-0.87)/3.7)+1;
-					var roupaVerao = new fabric.Group([roupaVeraoCima,roupaVeraoBaixo],{
+					//options.escalaTorax = ((caixaToraxica-0.87)/3.7)+1;
+					var SroupaVeraoCima = new fabric.Group([roupaVeraoCima],{
 						scaleY: options.escalaTorax,
 						scaleX: options.escalaTorax,
+						originX:'center'
+					});
+
+					//options.escalaTorax = ((caixaToraxica-0.87)/3.7)+1;
+					var SroupaVeraoBaixo = new fabric.Group([roupaVeraoBaixo],{
+						scaleY: options.escalaPerna,
+						scaleX: options.escalaCoxa,
 						originX:'center'
 					});
 
@@ -195,13 +217,13 @@ define(function (require) {
 					//clothes selection
 					var fullBody = [];
 					if(clothes == 'summer'){
-						fullBody = [cabeca,pescoco,torax,bracos,cintura,maoEsquerda,maoDireita,pernas,coxa,roupaVerao];
+						fullBody = [cabeca,pescoco,torax,bracos,cintura,maoEsquerda,maoDireita,pernas,coxa,SroupaVeraoCima, SroupaVeraoBaixo];
 					}
 					else if(clothes == 'winter'){
-						fullBody = [cabeca,pescoco,torax,bracos,cintura,maoEsquerda,maoDireita,pernas,coxa,roupaInverno];
+						fullBody = [cabeca,pescoco,torax,bracos,cintura,maoEsquerda,maoDireita,pernas,coxa,SroupaInvernoCima,SroupaInvernoBaixo];
 					}
 					else if(clothes == 'sleep'){
-						fullBody = [cabeca,pescoco,torax,bracos,cintura,maoEsquerda,maoDireita,pernas,coxa,roupaDormir];
+						fullBody = [cabeca,pescoco,torax,bracos,cintura,maoEsquerda,maoDireita,pernas,coxa,SroupaDormirCima,SroupaDormirBaixo];
 					}
 
 					
